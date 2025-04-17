@@ -1,0 +1,33 @@
+.cards{
+display: flex;
+align-items: center;
+justify-content: center;
+flex-wrap: wrap;
+
+
+    &__card{
+        height: auto;
+        max-width: 100%;
+       background: white;
+      
+       padding: 1rem;
+
+  
+        
+    }
+
+    &__img{
+        height: 20rem;
+
+  
+    }
+
+    &__button{
+        padding: 0.5rem 1.5rem;
+        border-radius: 0.5rem;
+  
+        border: none;
+    }
+ 
+
+}

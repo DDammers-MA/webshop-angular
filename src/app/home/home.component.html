@@ -1,0 +1,19 @@
+<section class="headerImg">
+
+</section>
+
+
+
+<section class="animals">
+    <div class="animals__container">
+      <div class="animals__div">
+        <ul class="animals__list">
+          @for (item of products; track $index) {
+          <li class="animals__listItem">
+            <app-project-card [product]="item"></app-project-card>
+          </li>
+          }
+        </ul>
+      </div>
+    </div>
+  </section>

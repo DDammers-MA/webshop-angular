@@ -1,0 +1,34 @@
+.headerImg{
+    height: 50vh;
+    width: 100%;
+
+    background-image: url(../../../public/pexels-pixabay-315938.jpg);
+    background-size: cover;
+    background-position: center;
+
+    
+}
+
+
+.animals {
+    padding: 4rem;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    &__container {
+      max-width: 132rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    &__list {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2.5rem;
+      list-style: none;
+    }
+  }

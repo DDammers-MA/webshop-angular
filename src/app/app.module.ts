@@ -1,0 +1,34 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { AppComponent } from './app.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+import { HeaderComponent } from './header/header.component';
+import { HomeComponent } from './home/home.component';
+import { HomeModule } from './home/home.module';
+import { SharedModule } from './shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './account/login/login.component';
+import { AccountModule } from './account/account.module';
+import { HeaderModule } from './header/header.module';
+
+
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [
+    HttpClientModule,
+    SharedModule,
+    HomeModule,
+    HeaderModule,
+    CommonModule,
+    BrowserModule,
+    AccountModule,
+    RouterModule.forRoot([
+      { path: '', component: HomeComponent },
+      {path: 'login', component: LoginComponent, title: 'Login'},
+    ])
+  ],
+  bootstrap: [AppComponent],
+})
+export class AppModule { }
