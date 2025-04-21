@@ -1,0 +1,56 @@
+.sidebar {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+  
+    &__container {
+      position: relative;
+    }
+
+    &__toggle {
+        position: absolute;
+        top: 1rem;
+        left: 200px; // Default position when sidebar is expanded
+        background-color: #1c7dde;
+        border: none;
+        color: #fff;
+        padding: 10px 12px;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 1001;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+  
+        &:hover {
+          background-color: #4c92d8;
+        }
+  
+        &.sidebar-collapsed {
+          left: 0px; // Position when sidebar is collapsed
+        }
+      }
+  }
+
+  .main {
+    flex-grow: 1;
+
+ 
+    background-color: #f4f6f7;
+    overflow-y: auto;
+    margin-left: 250px; // Default shift when sidebar is open
+    transition: all 0.3s ease-in-out;
+
+    &__container {
+        max-width: 132rem;
+        width: 100%;
+        background: red;
+      padding: 2rem;
+ 
+      margin: 0 auto;
+    }
+
+    &__shifted {
+      margin-left: 50px;
+    }
+  }
+  

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
 import { AuthService } from '../account/service/auth.service';
 
 @Component({
@@ -7,16 +7,19 @@ import { AuthService } from '../account/service/auth.service';
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent {
 
 
   Auth = inject(AuthService)
 
   user = this.Auth.currentUser
+ 
+  isSidebarCollapsed = false;
 
-  ngOnInit() {
-    console.log(this.user)
+  onSidebarToggle() {
+    this.isSidebarCollapsed = !this.isSidebarCollapsed;
   }
-  
+
+
 
 }

@@ -28,9 +28,23 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     BrowserModule,
     AccountModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent },
-      { path: 'login', component: LoginComponent, title: 'Login' },
-      {path: 'dashboard', component: DashboardComponent, title: 'dashboard'},
+      {
+        path: '',
+        component: HomeComponent
+      },
+      {
+        path: 'login',
+        component: LoginComponent,
+        title: 'Login'
+      },
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+        title: 'dashboard',
+        children: [
+          // { path: '', component: HomeComponent, title: 'home' }
+        ]
+      } // Add this line for the dashboard route,
     ])
   ],
   bootstrap: [AppComponent],

@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AuthService } from '../service/auth.service';
 
+
 @Component({
   selector: 'app-login',
   standalone: false,
@@ -11,7 +12,7 @@ import { AuthService } from '../service/auth.service';
 export class LoginComponent {
 
   authService = inject(AuthService)
-
+  value!: string;
 
   form = new FormGroup({
     email: new FormControl(''),
