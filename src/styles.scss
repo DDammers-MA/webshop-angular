@@ -1,3 +1,5 @@
+
+@layer reset {
 /* You can add global styles to this file, and also import other style files */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -17,4 +19,5 @@ body{
     color: #333;
     margin: 0;
     padding: 0;
+}
 }

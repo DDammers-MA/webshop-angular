@@ -11,12 +11,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './account/login/login.component';
 import { AccountModule } from './account/account.module';
 import { HeaderModule } from './header/header.module';
+import { DashboardModule } from './dashboard/dashboard.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    DashboardModule,
     HttpClientModule,
     SharedModule,
     HomeModule,
@@ -26,7 +29,8 @@ import { HeaderModule } from './header/header.module';
     AccountModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
-      {path: 'login', component: LoginComponent, title: 'Login'},
+      { path: 'login', component: LoginComponent, title: 'Login' },
+      {path: 'dashboard', component: DashboardComponent, title: 'dashboard'},
     ])
   ],
   bootstrap: [AppComponent],
