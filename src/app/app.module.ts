@@ -13,6 +13,7 @@ import { AccountModule } from './account/account.module';
 import { HeaderModule } from './header/header.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { UsersComponent } from './dashboard/users/users.component';
 
 
 
@@ -42,7 +43,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
         component: DashboardComponent,
         title: 'dashboard',
         children: [
-          // { path: '', component: HomeComponent, title: 'home' }
+          { path: 'users', component: UsersComponent, title: 'users' }
         ]
       } // Add this line for the dashboard route,
     ])

@@ -9,7 +9,7 @@
         <ng-container *ngFor="let item of menuItems">
           <li class="sidebar-menu-item">
             <a
-              [routerLink]="[]"
+              [routerLink]="[item.link]"
               class="sidebar-item"
               [ngClass]="{
                 'has-children': item.children,

@@ -1,0 +1,12 @@
+@use "./colors.scss";
+
+$primary-hover: all 0.5s;
+
+@mixin outline($color, $size) {
+  outline: $size solid rgba(255, 255, 255, 0);
+  transition: $primary-hover;
+
+  &:hover {
+    outline: $size solid $color;
+  }
+}

@@ -23,6 +23,7 @@ export class SidebarComponent {
       // ]
     },
     {
+      link: 'users',
       icon: 'fas fa-cog',
       label: 'Users',
       isOpen: false,
