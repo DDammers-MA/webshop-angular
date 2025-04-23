@@ -21,7 +21,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ButtonModule } from 'primeng/button';
 import { provideAnimationsAsync } from "@angular/platform-browser/animations/async";
 import { providePrimeNG } from "primeng/config";
-import Aura from '@primeng/themes/aura';
+import Aura from '@primeng/themes/Material';
 
 
 
@@ -36,10 +36,7 @@ import Aura from '@primeng/themes/aura';
         ReactiveFormsModule,
         FormsModule,
         ButtonModule,
-
-        TableModule, TagModule, IconFieldModule, InputTextModule, InputIconModule, MultiSelectModule, SelectModule, HttpClientModule, CommonModule
-
-    
+        TableModule, TagModule, IconFieldModule, InputTextModule, InputIconModule, MultiSelectModule, SelectModule, HttpClientModule, CommonModule    
     ],
     exports: [DashboardComponent],
     providers: [
