@@ -29,13 +29,19 @@ export class UsersComponent implements OnInit {
 
     name: new UntypedFormControl(''),
     email: new UntypedFormControl(''),
+    isAdmin: new UntypedFormControl(''),
   })
   change: any;
+
+  userOptions = [
+    { label: 'admin', value: 1 },
+    {label: 'user', value: 0}
+  ]
  
 
   ngOnInit(): void {
 
-    this.getData()
+      this.getData()
     
     // this.form.valueChanges.subscribe(() => {
     //   this.onFilterChange({
@@ -50,13 +56,9 @@ export class UsersComponent implements OnInit {
  
   getFilter() {
     const filterArg = { ...this.form.value }
-
-    delete filterArg['user_id']
-
-    delete filterArg['input']
     // Convert multiselect filter array's to lists
-    if (Array.isArray(this.form.value.usertype)) {
-      filterArg.usertype = String(this.form.value.usertype)
+    if (Array.isArray(this.form.value.isAdmin)) {
+      filterArg.isAdmin = String(this.form.value.isAdmin)
     }
 
     for (const key in filterArg) {

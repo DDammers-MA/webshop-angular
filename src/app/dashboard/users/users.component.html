@@ -35,6 +35,7 @@
              
                  <th style="width:22%">Status</th>
                  <th style="width:12%">Verified</th>
+                 <th></th>
              </tr>
              <tr>
                  <th>
@@ -67,23 +68,25 @@
                  <th>
                      <p-columnFilter field="status" matchMode="equals" [showMenu]="false">
                          <ng-template #filter let-value let-filter="filterCallback">
-                             <p-select
-                            
-                                 (onChange)="filter($event.value)"
-                                 placeholder="Select One"
-                                 [showClear]="true"
-                             
-                             >
-                                 <!-- <ng-template let-option #item>
-                                     <p-tag [value]="option.value" [severity]="getSeverity(option.value)" />
-                                 </ng-template> -->
-                             </p-select>
+                            <p-multiselect 
+                            [options]="userOptions" 
+                            formControlName="isAdmin" 
+                            styleClass="w-full md:w-80" 
+                            (onChange)="dbOnFilterChange()"
+                            />
+                        
                          </ng-template>
                      </p-columnFilter>
                  </th>
                  <th>
-                     <p-columnFilter type="boolean" field="verified"></p-columnFilter>
+                    
                  </th>
+
+                 <th>
+                    
+             
+
+
              </tr>
          </ng-template>
          <ng-template #body let-users>
@@ -105,6 +108,10 @@
 
                  <td>
                     {{users.email_verified_at}}
+                 </td>
+
+                 <td>
+                  
                  </td>
              </tr>
 
