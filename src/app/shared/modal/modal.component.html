@@ -1,1 +1,29 @@
-<p>modal works!</p>
+@if (dialogeService.show) {
+
+    <section class="backdrop" (click)="close()"></section>
+    
+    <article class="modal">
+      <header
+        [class]="
+          type == 'warning'
+            ? 'modal__header_warning modal__header'
+            : 'modal__header'
+        "
+      >
+        <h2 class="modal__title">{{ subject() }}</h2>
+        <i (click)="close()" class="modal__icon fa-regular fa-circle-xmark"></i>
+      </header>
+      <main class="modal__main">
+        <ng-content></ng-content>
+      </main>
+  
+      @if(type == "warning"){
+        <footer class="modal__footer">
+          <button class="modal__alt" (click)="onSubmit('cancel')">Annuleer</button>
+          <button class="modal__cta" (click)="onSubmit('submit')">Verder</button>
+        </footer>
+    }
+   
+    </article>
+
+}

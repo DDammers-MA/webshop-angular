@@ -14,12 +14,20 @@ import { HeaderModule } from './header/header.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UsersComponent } from './dashboard/users/users.component';
+import { PortalModule } from '@angular/cdk/portal';
+import { DialogService } from './services/dialog.service';
+import { ModalComponent } from './shared/modal/modal.component';
+import { UserModalComponent } from './dashboard/users/user-modal/user-modal.component';
+
 
 
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
+
+
+    PortalModule,
     DashboardModule,
     HttpClientModule,
     SharedModule,
@@ -39,7 +47,7 @@ import { UsersComponent } from './dashboard/users/users.component';
         title: 'Login'
       },
       {
-        path: 'dashboard',
+        path: 'dashboard', 
         component: DashboardComponent,
         title: 'dashboard',
         children: [
@@ -49,5 +57,6 @@ import { UsersComponent } from './dashboard/users/users.component';
     ])
   ],
   bootstrap: [AppComponent],
+
 })
 export class AppModule { }

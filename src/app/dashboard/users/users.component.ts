@@ -1,8 +1,11 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ViewChild } from '@angular/core';
 import { usersService } from './users.service';
 import { Params } from '@angular/router';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { TableLazyLoadEvent } from 'primeng/table';
+import { DialogService } from '../../services/dialog.service';
+import { ModalComponent } from '../../shared/modal/modal.component'; 
+import { CdkPortalOutlet, ComponentPortal } from '@angular/cdk/portal';
 
   
 export interface FilterChangedEventArgs {
@@ -15,15 +18,20 @@ export interface FilterChangedEventArgs {
   selector: 'app-users',
   templateUrl: './users.component.html',
   standalone: false,
-  styleUrls: ['./users.component.scss']
+  styleUrls: ['./users.component.scss'],
+
+
 })
 export class UsersComponent implements OnInit {
-
-  usersService = inject(usersService)
+    usersService = inject(usersService)
   customers!: any[];
   users: any
   representatives!: any[];
   list: string = ''
+
+  dialogService = inject(DialogService)
+
+  type!: any
   
   form: UntypedFormGroup = new UntypedFormGroup({
 
@@ -50,6 +58,14 @@ export class UsersComponent implements OnInit {
     //   });
     // });
   
+  }
+
+  openModal(type: string, event: any) {
+    
+
+    console.log('Opening modal');
+    this.dialogService.type = type; // Set the modal type dynamically
+    this.dialogService.openModal(); // Corrected the typo
   }
 
 
@@ -111,8 +127,8 @@ export class UsersComponent implements OnInit {
 
   dbOnFilterChange = this.debounce(() => this.getData(), 500)
 }
-  
-  
 
-  
-  
+
+
+
+

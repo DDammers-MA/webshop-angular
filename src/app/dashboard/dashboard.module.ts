@@ -22,22 +22,26 @@ import { ButtonModule } from 'primeng/button';
 import { provideAnimationsAsync } from "@angular/platform-browser/animations/async";
 import { providePrimeNG } from "primeng/config";
 import Aura from '@primeng/themes/Material';
+import { UserModalComponent } from "./users/user-modal/user-modal.component";
+import { SharedModule } from "../shared/shared.module";
 
 
 
 @NgModule({
-    declarations: [DashboardComponent, SidebarComponent, UsersComponent],
-    imports: [
-        BrowserAnimationsModule,
-        BrowserModule,
-        RouterOutlet,
-        RouterLink,
-        TableModule,
-        ReactiveFormsModule,
-        FormsModule,
-        ButtonModule,
-        TableModule, TagModule, IconFieldModule, InputTextModule, InputIconModule, MultiSelectModule, SelectModule, HttpClientModule, CommonModule    
-    ],
+    declarations: [DashboardComponent, SidebarComponent, UsersComponent, UserModalComponent],
+  imports: [
+      
+    BrowserAnimationsModule,
+    BrowserModule,
+    RouterOutlet,
+    RouterLink,
+    TableModule,
+    ReactiveFormsModule,
+    FormsModule,
+    ButtonModule,
+    TableModule, TagModule, IconFieldModule, InputTextModule, InputIconModule, MultiSelectModule, SelectModule, HttpClientModule, CommonModule,
+    SharedModule
+],
     exports: [DashboardComponent],
     providers: [
         provideAnimationsAsync(),

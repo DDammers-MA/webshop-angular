@@ -1,4 +1,3 @@
-
 <section class="users">
     <!-- <div class="search"> 
 
@@ -25,7 +24,7 @@
      >
          <ng-template #caption>
              <div class="flex">
-                <button class="users__addBtn">Add new</button>
+                <button (click)="openModal('edit', $event)" class="users__addBtn">Add new</button>
              </div>
          </ng-template>
          <ng-template #header>
@@ -127,3 +126,5 @@
      </div>
 
 </section>
+
+
