@@ -1,5 +1,4 @@
 
-@if(isAdmin===0 && isLoggedIn){
 <header class="header">
     <nav class="header__nav">
 
@@ -11,6 +10,12 @@
             <li class="header__navListItem">
                 <a class="header__navLink" routerLink="" routerLinkActive="active">Products</a>
             </li>
+
+            @if (isAdmin) {
+                       <li class="header__navListItem">
+                <a class="header__navLink" routerLink="dashboard" routerLinkActive="active">Dashboard</a>
+            </li>
+            }
         </ul>
 
         <ul class="header__navList">
@@ -26,5 +31,5 @@
     </nav>
 
 </header>
-}
+
 

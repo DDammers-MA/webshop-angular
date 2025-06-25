@@ -1,61 +1,57 @@
-import { NgModule } from "@angular/core";
-import { DashboardComponent } from "./dashboard.component";
+import { NgModule, OnInit, output } from '@angular/core';
+import { DashboardComponent } from './dashboard.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SidebarComponent } from "./sidebar/sidebar.component";
-import { RouterLink, RouterModule, RouterOutlet } from "@angular/router";
-import { BrowserModule } from "@angular/platform-browser";
-import { HomeComponent } from "../home/home.component";
-import { UsersComponent } from "./users/users.component";
-import { TableModule } from 'primeng/table';
-import { Table } from 'primeng/table';
-import { TagModule } from 'primeng/tag';
-import { IconFieldModule } from 'primeng/iconfield';
-import { InputIconModule } from 'primeng/inputicon';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
+import { HomeComponent } from '../home/home.component';
+import { UsersComponent } from './users/users.component';
+
 import { HttpClientModule } from '@angular/common/http';
-import { InputTextModule } from 'primeng/inputtext';
-import { MultiSelectModule } from 'primeng/multiselect';
-import { SelectModule } from 'primeng/select';
+
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { ButtonModule } from 'primeng/button';
-import { provideAnimationsAsync } from "@angular/platform-browser/animations/async";
-import { providePrimeNG } from "primeng/config";
-import Aura from '@primeng/themes/Material';
-import { UserModalComponent } from "./users/user-modal/user-modal.component";
-import { SharedModule } from "../shared/shared.module";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
+import Nora from '@primeng/themes/Material';
+import { UserModalComponent } from './users/user-modal/user-modal.component';
+import { SharedModule } from '../shared/shared.module';
+
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
-    declarations: [DashboardComponent, SidebarComponent, UsersComponent, UserModalComponent],
+  declarations: [
+    DashboardComponent,
+    SidebarComponent,
+    UsersComponent,
+    UserModalComponent,
+  ],
   imports: [
-      
-    BrowserAnimationsModule,
-    BrowserModule,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    SharedModule,
     RouterOutlet,
     RouterLink,
-    TableModule,
-    ReactiveFormsModule,
-    FormsModule,
-    ButtonModule,
-    TableModule, TagModule, IconFieldModule, InputTextModule, InputIconModule, MultiSelectModule, SelectModule, HttpClientModule, CommonModule,
-    SharedModule
-],
-    exports: [DashboardComponent],
-    providers: [
-        provideAnimationsAsync(),
-        providePrimeNG({
-          theme: {
-            preset: Aura
-          }
-      
-        })
-    ]
-    
+
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatButtonModule,
+  ],
+  exports: [DashboardComponent],
+  providers: [],
 })
-
-export class DashboardModule { 
-
-
-}
+export class DashboardModule {}

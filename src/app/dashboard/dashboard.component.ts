@@ -1,6 +1,7 @@
-import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnInit, output, Output } from '@angular/core';
 import { AuthService } from '../account/service/auth.service';
 import { DialogService } from '../services/dialog.service';
+import { ShowHeaderService } from '../services/showHeaser.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,6 +11,7 @@ import { DialogService } from '../services/dialog.service';
 })
 export class DashboardComponent {
 
+  showheaderService = inject(ShowHeaderService)
   dialogService = inject(DialogService)
   Auth = inject(AuthService)
 
@@ -21,6 +23,17 @@ export class DashboardComponent {
   onSidebarToggle() {
     this.isSidebarCollapsed = !this.isSidebarCollapsed;
   }
+
+showHeader = output<any>()
+
+  ngOnInit(): void {
+  
+    this.showheaderService.setShowHeader(false)
+
+  // this.showHeader.emit(false)
+  // console.log(this.showHeader);
+  
+}
 
 
 

@@ -6,122 +6,103 @@
         <button class="users__addBtn">Add new</button>
 
     </div> -->
-    <div class="card">
-        <form class="filter__form" [formGroup]="form">
-        <p-table
-         #dt2
-         [value]="users"
-         dataKey="id"
-         [rows]="10"
-         [rowsPerPageOptions]="[10, 25, 50]"
+    <div class="users__container">
+      <div class="users__header">
+        <h1 class="users__title">Users</h1>
+        <button class="users__addBtn">Add new</button>
+      </div>
 
-     
-         [paginator]="true"
-         [globalFilterFields]="['name']"
-         [tableStyle]="{ 'height': '100vh' }"
-         [scrollHeight]="'60rem'"
+        
+        <form class="form" [formGroup]="form">
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
-     >
-         <ng-template #caption>
-             <div class="flex">
-                <button (click)="openModal('edit', $event)" class="users__addBtn">Add new</button>
-             </div>
-         </ng-template>
-         <ng-template #header>
-             <tr>
-                 <th style="width:22%">Name</th>
-                 <th style="width:22%">email</th>
-             
-                 <th style="width:22%">Status</th>
-                 <th style="width:12%">Verified</th>
-                 <th></th>
-             </tr>
-             <tr>
-                 <th>
-                    <input
-                    class="input"
-                    type="text"
-                    pInputText
-                    pKeyFilter="alpha"
-                    (input)="dbOnFilterChange()"
-                    placeholder="Voer uw zoek term in"
-                    formControlName="name"
-                    field="name"
-                 
-                  />
-                 </th>
-                 <th>
-                    <input
-                    class="input"
-                    type="text"
-                    pInputText
-                    pKeyFilter="alpha"
-                    (input)="dbOnFilterChange()"
-                    placeholder="Voer uw zoek term in"
-                    formControlName="email"
-                    field="email"
-                 
-                  />
-                 </th>
+  <!-- Position Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">
+      
+      <div class="users__search">
 
-                 <th>
-                     <p-columnFilter field="status" matchMode="equals" [showMenu]="false">
-                         <ng-template #filter let-value let-filter="filterCallback">
-                            <p-multiselect 
-                            [options]="userOptions" 
-                            formControlName="isAdmin" 
-                            styleClass="w-full md:w-80" 
-                            (onChange)="dbOnFilterChange()"
-                            />
-                        
-                         </ng-template>
-                     </p-columnFilter>
-                 </th>
-                 <th>
-                    
-                 </th>
-
-                 <th>
-                    
-             
+<span>ID</span>
 
 
-             </tr>
-         </ng-template>
-         <ng-template #body let-users>
-             <tr>
-                 <td>
-                     {{ users.name }}
-                 </td>
-
-                 <td>
-                    {{ users.email }}
-                </td>
-                
-              
-                
-                 <td>
-            {{users.is_admin}}
-                 </td>
+  </div>
 
 
-                 <td>
-                    {{users.email_verified_at}}
-                 </td>
+    </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
 
-                 <td>
-                  
-                 </td>
-             </tr>
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+   
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">
 
+      <div class="users__search">
+        <span>Name</span>
+         <input class="users__searchInput" placeholder="search user by name"  formControlName="name" (input)="dbOnFilterChange()">
+      </div>
+    
+      <!-- <input  formControlName="name" (input)="dbOnFilterChange()"> -->
+    </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
 
-         </ng-template>
-         <ng-template #emptymessage>
-             <tr>
-                 <td colspan="5">No customers found.</td>
-             </tr>
-         </ng-template>
-     </p-table>
+    <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">
+      
+
+       <div class="users__search">
+          <div class="users__search">
+
+            <span>Email</span>
+            <input class="users__searchInput"  placeholder="search user by email"  formControlName="email" (input)="dbOnFilterChange()">
+          </div>
+      </div>
+    </th>
+    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by weight">
+        <div class="users__search">
+
+          <span>Status</span>
+        </div>
+    </th>
+    <td mat-cell *matCellDef="let element"> {{element.is_admin === 1 ? "admin" : 'user'}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="created_at">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol">
+        <div class="users__search">
+
+      <span>    Created at</span>
+        </div>
+      </th>
+    <td mat-cell *matCellDef="let element"> {{element.created_at}} </td>
+  </ng-container>
+
+    <ng-container matColumnDef="verified">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol">
+        <div class="users__search">
+
+      <span>    Verified</span>
+        </div>
+    </th>
+    <td mat-cell *matCellDef="let element"> {{element.email_verified_at}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr   [class.odd-row]="i % 2 === 1" mat-row *matRowDef="let row; let i = index; columns: displayedColumns;"></tr>
+</table>
+
+ <mat-paginator [pageSizeOptions]="[10, 20, 50]"
+                 showFirstLastButtons
+                 aria-label="Select page of periodic elements">
+  </mat-paginator>
+
         </form>
      </div>
 
