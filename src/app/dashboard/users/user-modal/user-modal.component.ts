@@ -37,6 +37,7 @@ ngOnInit(): void {
     if (this.form.valid) {
       this.userService.createUsers(this.form.value).subscribe({
         next: (item: any) => {
+console.log(item);
 
         }
       })
