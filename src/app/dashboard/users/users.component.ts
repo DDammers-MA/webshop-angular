@@ -57,6 +57,7 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.openModal('users')
     this.getData();
 console.log(this.dataSource, 'dataSource');
 
@@ -68,7 +69,7 @@ console.log(this.dataSource, 'dataSource');
     // });
   }
 
-  openModal(type: string, event: any) {
+  openModal(type: string) {
     console.log('Opening modal');
     this.dialogService.type = type; // Set the modal type dynamically
     this.dialogService.openModal(); // Corrected the typo

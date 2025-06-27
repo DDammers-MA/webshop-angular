@@ -17,7 +17,7 @@
 
 .modal {
   border-radius: 1.5rem;
-  width: 65%;
+  width: 35%;
   position: absolute;
   overflow: hidden;
   position: fixed;
@@ -31,7 +31,7 @@
 
   &__header {
     width: 100%;
-    background: black;
+    background: #2c3e50;
     color: white;
     display: flex;
     align-items: start;
@@ -58,6 +58,7 @@
     cursor: pointer;
     width: max-content;
     text-align: end;
+
   }
 
   &__main {

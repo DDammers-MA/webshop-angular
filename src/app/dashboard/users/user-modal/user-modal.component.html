@@ -1,6 +1,39 @@
 <ng-container>
   <app-modal [subject]="'create new user'" (closeModal)="close()">
-    <h1>Hallo</h1>
+   
+    
+    <form (submit)="submit()" class="form" [formGroup]="form" action="">
+      <div class="form__group">
+        <label class="form__lable" for="name">Name</label>
+        <input class="form__input" id="name" type="text" formControlName="name" placeholder="Enter user name" />
+      </div>
+
+      <div class="form__group">
+        <label class="form__lable" for="email">Email</label>
+        <input class="form__input" id="email" type="email" formControlName="email" placeholder="Enter user email" />
+      </div>
+
+      <div class="form__group">
+        <label class="form__lable" for="status">is admin</label>
+
+        <select class="form__select" id="status" formControlName="is_admin">
+          <option class="form__option" value="0">User</option>
+          <option class="form__option" value="1">Admin</option>
+        </select>
+
+        
+      </div>
+
+      <div class="form__group">
+        <label class="form__lable" for="password">Password</label>
+        <input class="form__input" id="password" type="password" formControlName="password" placeholder="Enter user password" />  
+      </div>
+
+      <div class="form__group form__group--submit">
+        <button class="form__submitBtn" type="submit" [disabled]="!form.valid">Create User</button>
+
+      </div>
+    </form>
     
   </app-modal>
 </ng-container>

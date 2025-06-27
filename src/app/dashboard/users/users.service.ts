@@ -25,7 +25,11 @@ export class usersService{
             })
         .pipe(map((res: any) => ( res.data )));
     
-    }
+  }
+  
+  createUsers(body: any) {
+    return this.httpclient.post<any>('http://localhost:8080/users', body)
+  }
 
 
     public buildUrl(
