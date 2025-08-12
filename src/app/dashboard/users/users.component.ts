@@ -28,6 +28,7 @@ export class UsersComponent implements OnInit {
   users: any[] = [];
   representatives!: any[];
   list: string = '';
+  load = true;
 
   dialogService = inject(DialogService);
 
@@ -57,7 +58,8 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.openModal('users')
+    this.load = true
+    // this.openModal('users')
     this.getData();
 console.log(this.dataSource, 'dataSource');
 
@@ -103,8 +105,14 @@ console.log(this.dataSource, 'dataSource');
       next: (users: any) => {
         this.users = users;
         this.dataSource.data = users;
+
+        this.load = false;
         console.log(this.users);
       },
+
+      error: () => {
+      this.load = false; // important to reset on error too
+    },
     });
   }
 

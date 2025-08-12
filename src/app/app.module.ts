@@ -18,6 +18,7 @@ import { PortalModule } from '@angular/cdk/portal';
 import { DialogService } from './services/dialog.service';
 import { ModalComponent } from './shared/modal/modal.component';
 import { UserModalComponent } from './dashboard/users/user-modal/user-modal.component';
+import { RegisterComponent } from './account/register/register.component';
 
 
 
@@ -45,6 +46,11 @@ import { UserModalComponent } from './dashboard/users/user-modal/user-modal.comp
         path: 'login',
         component: LoginComponent,
         title: 'Login'
+      },
+            {
+        path: 'register',
+        component: RegisterComponent,
+        title: 'register'
       },
       {
         path: 'dashboard', 

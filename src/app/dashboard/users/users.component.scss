@@ -4,6 +4,15 @@
    
    border-radius: 1rem;
 
+   &__spinner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background: grey;
+   }
+
    &__header{
     display: flex;
     justify-content: space-between ;

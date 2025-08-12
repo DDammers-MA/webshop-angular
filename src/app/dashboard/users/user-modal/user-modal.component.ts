@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, output } from '@angular/core';
 import { DialogService } from '../../../services/dialog.service';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { UsersComponent } from '../users.component';
@@ -16,6 +16,9 @@ export class UserModalComponent implements OnInit {
   userService = inject(usersService);
 type: any;
   subject: any;
+
+  reload = output()
+  loadingChange = output<boolean>()
 
 
   form: UntypedFormGroup = new UntypedFormGroup({
@@ -35,9 +38,13 @@ ngOnInit(): void {
   
   submit() {
     if (this.form.valid) {
+      this.loadingChange.emit(true);
       this.userService.createUsers(this.form.value).subscribe({
         next: (item: any) => {
-console.log(item);
+          console.log(item);
+          
+          this.reload.emit();
+          this.loadingChange.emit(false);
 
         }
       })

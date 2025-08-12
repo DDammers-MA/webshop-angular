@@ -99,4 +99,48 @@ export class AuthService {
     //   get currentUser(): any {
     //     return JSON.parse(localStorage.getItem('user') || '{}')
     //   }
+
+
+     register(form: any ) {
+  const registerPayload = {
+    email: form.email,
+    password: form.password,
+    name: form.name || '',
+  };
+
+  this.httpclient.post<any>('http://localhost:8080/api/register', registerPayload).subscribe({
+    next: (res) => {
+      // If backend sends token on register
+      if (res.token) {
+        this.bearerToken = res.token;
+        localStorage.setItem('token', this.bearerToken);
+
+        // Fetch and store user data
+        this.getUserFromApi().then((user) => {
+          if (user.data && user.data.id) {
+            localStorage.setItem('user', JSON.stringify(user.data));
+
+            // Redirect after register
+            if (user.data.is_admin) {
+              this.router.navigate(['/dashboard']);
+            } else {
+              this.router.navigate(['/']);
+            }
+          } else {
+            console.error('Invalid user data received after registration');
+          }
+        }).catch((err) => {
+          console.error('Error fetching user data:', err);
+        });
+      } else {
+        console.warn('No token received after registration');
+      }
+    },
+    error: (err) => {
+      console.error('Registration error:', err);
+    }
+  });
+}
+
+
 }

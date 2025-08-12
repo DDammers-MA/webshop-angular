@@ -6,6 +6,19 @@
         <button class="users__addBtn">Add new</button>
 
     </div> -->
+
+@if (load) {
+    <div class="users__spinner">
+    <mat-progress-spinner
+      mode="indeterminate"
+      diameter="50">
+    </mat-progress-spinner>
+  </div>
+} @else {
+
+
+
+
     <div class="users__container">
       <div class="users__header">
         <h1 class="users__title">Users</h1>
@@ -15,6 +28,7 @@
         
         <form class="form" [formGroup]="form">
   <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+   
 
   <!-- Position Column -->
   <ng-container matColumnDef="id">
@@ -96,6 +110,7 @@
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr   [class.odd-row]="i % 2 === 1" mat-row *matRowDef="let row; let i = index; columns: displayedColumns;"></tr>
+
 </table>
 
  <mat-paginator [pageSizeOptions]="[10, 20, 50]"
@@ -106,6 +121,9 @@
         </form>
      </div>
 
+     }
+
 </section>
 
 
+  <app-user-modal (reload)="getData()" (loadingChange)="load = $event"></app-user-modal>
