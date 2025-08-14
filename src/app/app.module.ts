@@ -19,6 +19,7 @@ import { DialogService } from './services/dialog.service';
 import { ModalComponent } from './shared/modal/modal.component';
 import { UserModalComponent } from './dashboard/users/user-modal/user-modal.component';
 import { RegisterComponent } from './account/register/register.component';
+import { LogoutComponent } from './account/logout/logout.component';
 
 
 
@@ -46,6 +47,11 @@ import { RegisterComponent } from './account/register/register.component';
         path: 'login',
         component: LoginComponent,
         title: 'Login'
+      },
+        {
+        path: 'logout',
+        component: LogoutComponent,
+        title: 'logout'
       },
             {
         path: 'register',

@@ -29,6 +29,7 @@ export class UsersComponent implements OnInit {
   representatives!: any[];
   list: string = '';
   load = true;
+  title = 'Create new user';
 
   dialogService = inject(DialogService);
 
@@ -39,6 +40,9 @@ export class UsersComponent implements OnInit {
     email: new UntypedFormControl(''),
     isAdmin: new UntypedFormControl(''),
   });
+
+  formdata: any;
+
   change: any;
 
   userOptions = [
@@ -46,7 +50,7 @@ export class UsersComponent implements OnInit {
     { label: 'user', value: 0 },
   ];
 
-  displayedColumns: string[] = ['id', 'name', 'email', 'status', 'created_at', 'verified'];
+  displayedColumns: string[] = ['id', 'name', 'email', 'status', 'created_at', 'verified', 'actions'];
   dataSource = new MatTableDataSource(this.users);
 
   @ViewChild(MatSort) sort!: MatSort;
@@ -57,11 +61,23 @@ export class UsersComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
 
+  EditUser(user: any) {
+    console.log(event, "event");
+
+    
+    this.title = "Edit user";
+    this.formdata = user;
+    this.openModal('edit');
+  
+}
+
+
+
   ngOnInit(): void {
     this.load = true
     // this.openModal('users')
     this.getData();
-console.log(this.dataSource, 'dataSource');
+
 
     // this.form.valueChanges.subscribe(() => {
     //   this.onFilterChange({
@@ -72,7 +88,7 @@ console.log(this.dataSource, 'dataSource');
   }
 
   openModal(type: string) {
-    console.log('Opening modal');
+ 
     this.dialogService.type = type; // Set the modal type dynamically
     this.dialogService.openModal(); // Corrected the typo
   }
@@ -107,7 +123,7 @@ console.log(this.dataSource, 'dataSource');
         this.dataSource.data = users;
 
         this.load = false;
-        console.log(this.users);
+        
       },
 
       error: () => {

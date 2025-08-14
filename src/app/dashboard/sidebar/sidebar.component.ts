@@ -15,7 +15,7 @@ export class SidebarComponent {
     {
       link: '/',
       icon: 'fas fa-home',
-      label: 'Dashboard',
+      label: 'Home',
       isOpen: false,
       // children: [
       //   { icon: 'fas fa-chart-pie', label: 'Analytics' },
@@ -35,7 +35,17 @@ export class SidebarComponent {
     {
       icon: 'fas fa-envelope',
       label: 'Messages'
-    }
+    },
+        {
+      link: '/logout',
+      icon: 'fas fa-cog',
+      label: 'Logout',
+      isOpen: false,
+      // children: [
+      //   { icon: 'fas fa-user', label: 'Profile' },
+      //   { icon: 'fas fa-lock', label: 'Security' },
+      // ]
+    },
   ];
   toggleSidebar() {
     this.sidebarToggle.emit();

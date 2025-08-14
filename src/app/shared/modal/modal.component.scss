@@ -2,7 +2,7 @@
 @use "../../../scss/mixins.scss";
 
 .backdrop {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.47);
@@ -31,7 +31,7 @@
 
   &__header {
     width: 100%;
-    background: #2c3e50;
+    background: colors.$purple;
     color: white;
     display: flex;
     align-items: start;

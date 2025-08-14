@@ -1,5 +1,5 @@
 <ng-container>
-  <app-modal [subject]="'create new user'" (closeModal)="close()">
+  <app-modal [subject]="title()" (closeModal)="close()">
    
     
     <form (submit)="submit()" class="form" [formGroup]="form" action="">
@@ -14,7 +14,7 @@
       </div>
 
       <div class="form__group">
-        <label class="form__lable" for="status">is admin</label>
+        <label class="form__lable" for="status">Role</label>
 
         <select class="form__select" id="status" formControlName="is_admin">
           <option class="form__option" value="0">User</option>
@@ -24,13 +24,27 @@
         
       </div>
 
+    @if (!this.formdata()?.id) {
+
+      
       <div class="form__group">
         <label class="form__lable" for="password">Password</label>
         <input class="form__input" id="password" type="password" formControlName="password" placeholder="Enter user password" />  
       </div>
+      
+    }
+      
+
 
       <div class="form__group form__group--submit">
-        <button class="form__submitBtn" type="submit" [disabled]="!form.valid">Create User</button>
+
+        @if (this.formdata()?.id) {
+        <button class="form__submitBtn" type="submit" [disabled]="!form.valid">Update User</button>
+
+        }@else {
+
+          <button class="form__submitBtn" type="submit" [disabled]="!form.valid">Create User</button>
+        }
 
       </div>
     </form>

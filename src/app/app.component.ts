@@ -6,36 +6,44 @@ import { AuthService } from './account/service/auth.service';
 @Component({
   selector: 'app-root',
   standalone: false,
-  
+
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
   title = 'webshop';
 
-  showHeaderService = inject(ShowHeaderService)
+  showHeaderService = inject(ShowHeaderService);
 
-  authService = inject(AuthService)
-  router = inject(Router)
+  authService = inject(AuthService);
+  router = inject(Router);
 
   user = this.authService.currentUser;
 
-  headerVisible = true
+  headerVisible = true;
 
-ngOnInit(): void {
-  this.showHeaderService.showHeader$.subscribe(value => {
-    this.headerVisible = value;
-  });
+  ngOnInit(): void {
+    this.router.events.subscribe((event) => {
+      if (this.router.url.startsWith('/dashboard')) {
+        this.headerVisible = false;
+        this.showHeaderService.setShowHeader(false);
+      } else {
+        this.headerVisible = true;
+        this.showHeaderService.setShowHeader(true);
+      }
+    });
 
-  if (this.user.isLoggedIn) {
-    this.router.navigate(['/'])
+    this.showHeaderService.showHeader$.subscribe((value) => {
+      this.headerVisible = value;
+    });
+
+    if (this.user.isLoggedIn) {
+      this.router.navigate(['/']);
+    }
   }
 
-
-}
-  
   // onShowHeader(value: boolean) {
-    
+
   //   this.headerVisible = value
   // }
 }

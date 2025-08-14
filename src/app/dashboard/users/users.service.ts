@@ -26,6 +26,13 @@ export class usersService{
         .pipe(map((res: any) => ( res.data )));
     
   }
+
+  updateUser(id: number, body: any) {
+    return this.httpclient.put<any>(`http://localhost:8080/users/${id}`,
+      body
+    );
+  }
+
   
   createUsers(body: any) {
     return this.httpclient.post<any>('http://localhost:8080/users', body)
