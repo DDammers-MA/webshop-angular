@@ -13,7 +13,8 @@ import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
     imports: [
         RouterLink,
         RouterLinkActive,
-        CommonModule,
+      CommonModule,
+        SharedModule,
      
     ],
   exports: [HeaderComponent]

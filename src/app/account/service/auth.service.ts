@@ -1,17 +1,35 @@
 import { HttpClient } from "@angular/common/http"
 import { inject, Injectable } from "@angular/core"
 import { Router } from "@angular/router"
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
   })
 
 export class AuthService {
+  private _isLoggedIn = new BehaviorSubject<boolean>(false);
+  isLoggedIn$ = this._isLoggedIn.asObservable();
+  
+
+
     httpclient = inject(HttpClient)
     bearerToken: string = ''
     router = inject(Router)
     private _currentUser?: any;
-
+  private _currentUser$ = new BehaviorSubject<any>(null);
+  currentUser$ = this._currentUser$.asObservable();
+  
+  constructor() {
+  const token = localStorage.getItem('token');
+    this._isLoggedIn.next(!!token);
+    
+      const localUser = localStorage.getItem('user');
+  if (localUser) {
+    this._currentUser = JSON.parse(localUser);
+    this._currentUser$.next(this._currentUser);
+  }
+}
 
     get currentUser(): any { 
 
@@ -38,14 +56,17 @@ export class AuthService {
 
                 this.bearerToken = res.data
 
-                localStorage.setItem('token', this.bearerToken)
+            localStorage.setItem('token', this.bearerToken)
+            
+               this._isLoggedIn.next(true);
 
                 // Fetch the user data after login
                 this.getUserFromApi().then((user) => {
                                 
                     if (user.data && user.data.id) { // Ensure the user object is valid
                         localStorage.setItem('user', JSON.stringify(user.data))
-
+   this._currentUser = user.data;
+    this._currentUser$.next(user.data);
                         if(user.data.is_admin) {
                             this.router.navigate(['/dashboard'])
                         } else {
@@ -89,7 +110,14 @@ export class AuthService {
         localStorage.removeItem('token')
         localStorage.removeItem('user')
         this.bearerToken = ''
-        console.log('Logged out')
+      console.log('Logged out')
+      
+      this._isLoggedIn.next(false);
+
+        this._currentUser = { id: null, email: '', is_admin: false };
+  this._currentUser$.next(this._currentUser);
+     
+      
     }
     
     get isLoggedIn(): boolean {

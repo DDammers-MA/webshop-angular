@@ -24,8 +24,16 @@
             </li>
             <li class="header__navListItem">
 
-                @if(user){
-                   <a class="header__navLink" routerLink="" routerLinkActive="active"><i class="fa-solid fa-user"></i></a>
+                @if(isLoggedIn){
+                    <div class="header__userName">
+
+ <app-dropdown [options]="menuItems"
+    (openedDropdown)="getUserMenu()" [chosenOption]="chosenUserId" [placeholder]="user.name" >
+</app-dropdown>
+               
+               
+
+                        </div>
                 }
                 @else{
 

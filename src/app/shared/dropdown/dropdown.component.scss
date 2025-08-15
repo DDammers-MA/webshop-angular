@@ -1,0 +1,110 @@
+@use "../../../scss/colors.scss";
+@use "../../../scss/mixins.scss";
+
+@layer component {
+  :host {
+    display: grid;
+  }
+  .dropdown {
+  
+   
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    width: max-content;
+    overflow: hidden;
+
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__open {
+      border-bottom-left-radius: 0rem;
+      border-bottom-right-radius: 0rem;
+    }
+
+    &__wrapper {
+      position: relative;
+      min-width: max-content;
+    }
+
+    &__text {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+    }
+
+    &__titel {
+      min-width: 10rem;
+      max-width: 18rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  .option {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-bottom: 0.1rem solid colors.$purple-dark;
+    transition: mixins.$primary-hover;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    overflow-wrap: break-word;
+    font-size: 1.8rem;
+    color: rgb(42, 42, 42);
+
+    &__selected {
+      color: colors.$purple-dark;
+    }
+
+    &__disabled {
+      color: #707070 !important;
+    }
+
+    &:hover {
+      background: colors.$purple;
+      color: colors.$white;
+    }
+
+    &:last-of-type {
+      border: none;
+    }
+
+    &__wrapper {
+      overflow: hidden;
+      position: absolute;
+      background: white;
+      border: solid 0.3rem colors.$purple-dark;
+      border-top: none;
+      width: 100%;
+      border-bottom-left-radius: 0.5rem;
+      border-bottom-right-radius: 0.5rem;
+      z-index: 50;
+      box-shadow: 0.4rem 0.4rem 0.8rem 0rem rgba(0, 0, 0, 0.471);
+    }
+  }
+
+  .dropdown__green {
+    border-color: colors.$green;
+  }
+
+  .option__green {
+    border-color: colors.$green;
+
+    &:hover {
+      background: colors.$green-dark;
+      color: colors.$green-light;
+    }
+
+    &__selected {
+      color: colors.$green;
+    }
+
+    &__wrapper {
+      border-color: colors.$green;
+    }
+  }
+}

@@ -1,0 +1,49 @@
+<div 
+class="dropdown__wrapper"
+(mouseenter)="isDropdownVisible = true; openEmit()"
+(mouseleave)="isDropdownVisible = false"
+(click)="isDropdownVisible = !isDropdownVisible"
+
+>
+    <div class="dropdown" [ngClass]="{
+        dropdown__open: isDropdownVisible, dropdown__green: color()}">
+        <div class="dropdown__text">
+            <p class="dropdown__titel" [innerHTML]="selectedLabel() || selectedOptionTitle || placeholder() || 'Kies een optie'"> </p>
+            <i class="fa-solid " [ngClass]="isDropdownVisible ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+        </div>
+        
+    </div>
+    <div class="option__wrapper" *ngIf="isDropdownVisible" [ngClass]="{option__green__wrapper: color()}">
+        @for(option of options(); track $index){
+
+            @if(option.visible !== false){
+
+                @if(option.link){
+                    <div
+                    [ngClass]="{
+                        'option__disabled': option.disabled === true,
+                        'option__selected': option.value === chosenOption() || option.value == selectedOption,
+                        'option__green__selected': color() && (option.value === chosenOption() || option.value === selectedOption)}"
+                    class="option"
+                    [routerLink]="option.link" routerLinkActive="option__selected">
+                        {{option.label}}
+                    </div>
+                }
+                @else{
+                    <div
+                    [ngClass]="{
+                        'option__disabled': option.disabled === true,
+                        'option__selected': option.value === chosenOption() || option.value == selectedOption,
+                        'option__green__selected': color() && (option.value === chosenOption() || option.value === selectedOption)}"
+                    class="option"
+                    (click)="optionSelect(option)">
+                        {{option.label}} 
+                    </div>
+                }
+
+            }
+
+        }
+    </div>
+</div>
+            
