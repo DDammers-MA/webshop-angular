@@ -1,8 +1,8 @@
 
 <section class="login">
-    <h1>Login In</h1>
-
+    
     <form [formGroup]="form" class="login__form" action="" (ngSubmit)="submit()">
+        <h1 class="login__title">Login</h1>
         <div class="login__formGroup">
 
             <label class="login__formLabel" for="">Email</label>
@@ -15,8 +15,10 @@
             <input class="login__formInput" formControlName="password" type="password" name="password" id="password" placeholder="Enter your password" required>
         </div>
 
-        <div>
-            <button class="login__loginBtn" type="submit">Login</button>
+
+        <div class="login__buttons">
+            <button class="login__registerBtn" routerLink="/register">register</button>
+             <button class="login__loginBtn" type="submit" [disabled]="form.invalid">Login</button>
         </div>
     </form>
 

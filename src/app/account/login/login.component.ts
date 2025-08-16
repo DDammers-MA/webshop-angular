@@ -14,6 +14,7 @@ export class LoginComponent {
   authService = inject(AuthService)
   value!: string;
 
+
   form = new FormGroup({
     email: new FormControl(''),
     password: new FormControl(''),
@@ -21,7 +22,9 @@ export class LoginComponent {
 
 
   submit() {
-    this.authService.signInWithForm(this.form.value.email || '', this.form.value.password || '')
+    if (this.form.valid) {
+      this.authService.signInWithForm(this.form.value.email || '', this.form.value.password || '')
     }
+  }
   }
 

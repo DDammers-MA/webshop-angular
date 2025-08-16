@@ -4,14 +4,15 @@
 
 
 
-<section class="animals">
-    <div class="animals__container">
-      <div class="animals__div">
-        <ul class="animals__list">
+<section class="products">
+  <p class="products__titleType">Uitgelichte producten</p>
+    <div class="products__container">
+      <div class="products__div">
+        <ul class="products__list">
           @for (item of products; track $index) {
-          <li class="animals__listItem">
+          <!-- <li class="animals__listItem"> -->
             <app-project-card [product]="item"></app-project-card>
-          </li>
+          <!-- </li> -->
           }
         </ul>
       </div>
