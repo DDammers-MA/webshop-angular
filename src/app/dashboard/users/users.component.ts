@@ -50,15 +50,15 @@ export class UsersComponent implements OnInit {
     { label: 'user', value: 0 },
   ];
 
-  displayedColumns: string[] = ['id', 'name', 'email', 'status', 'created_at', 'verified', 'actions'];
-  dataSource = new MatTableDataSource(this.users);
+  // displayedColumns: string[] = ['id', 'name', 'email', 'status', 'created_at', 'verified', 'actions'];
+  // dataSource = new MatTableDataSource(this.users);
 
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngAfterViewInit(): void {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
+    // this.dataSource.sort = this.sort;
+    // this.dataSource.paginator = this.paginator;
   }
 
   EditUser(user: any) {
@@ -120,7 +120,7 @@ export class UsersComponent implements OnInit {
     this.usersService.loadUsers(f).subscribe({
       next: (users: any) => {
         this.users = users;
-        this.dataSource.data = users;
+        // this.dataSource.data = users;
 
         this.load = false;
         
