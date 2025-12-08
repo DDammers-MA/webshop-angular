@@ -26,28 +26,28 @@
     </div>
 
     <!-- Summary Section -->
-    <div class="cart-page__summary" *ngIf="product.length > 0">
+    <div class="cart-page__summary">
       <div class="cart-summary">
         <h3 class="cart-summary__title">Order Summary</h3>
         
         <div class="cart-summary__row">
           <span class="cart-summary__label">Subtotal:</span>
-          <span class="cart-summary__value">$</span>
+          <span class="cart-summary__value">${{ cartTotal }}</span>
         </div>
         
         <div class="cart-summary__row">
           <span class="cart-summary__label">Shipping:</span>
-          <span class="cart-summary__value">$0.00</span>
+          <span class="cart-summary__value">${{calculateShipping() | number: '1.2-2'}}</span>
         </div>
         
         <div class="cart-summary__row">
           <span class="cart-summary__label">Tax:</span>
-          <span class="cart-summary__value">$</span>
+          <span class="cart-summary__value">${{ calculateTax() | number: '1.2-2' }}</span>
         </div>
         
         <div class="cart-summary__row cart-summary__row--total">
           <span class="cart-summary__label">Total:</span>
-          <span class="cart-summary__total">$</span>
+          <span class="cart-summary__total">$ {{calculateGrandTotal()| number: '1.2-2'}}</span>
         </div>
 
         <button class="cart-summary__btn cart-summary__btn--checkout" >

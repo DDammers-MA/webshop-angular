@@ -1,38 +1,44 @@
 @use "../../../scss/colors.scss";
 
 .cards {
- // Example background color, adjust as needed
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   flex-wrap: wrap;
- // extra spacing between bigger cards
+
+  height: 100%;
+  width: 80%;
 
   &__card {
-    background: white;
+    background: linear-gradient(135deg, #ffffff 0%, #fafbfc 100%);
     border-radius: 1rem;
     overflow: hidden;
     padding: 1.5rem;
-    width: 100%; // full width on smaller screens
-    
-    min-height: 32rem; // ensures cards look taller
+    width: 100%;
+    min-height: 32rem;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    box-shadow: 0 4px 12px rgba(2, 6, 23, 0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     &:hover {
-      transform: translateY(-8px) scale(1.03);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+      transform: translateY(-6px);
+      box-shadow: 0 16px 32px rgba(124, 58, 237, 0.15);
+      border-color: rgba(124, 58, 237, 0.2);
     }
   }
 
   &__img {
-    height: 18rem; // was 14rem
+    height: 18rem;
     width: 100%;
-    object-fit: cover;
-    border-radius: 0.75rem;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 0.8rem;
     margin-bottom: 1.25rem;
+    display: block;
+    background: #f9fafb;
+    transition: transform 0.3s ease;
+
+    .cards__card:hover & {
+      transform: scale(1.02);
+    }
   }
 
   &__body {
@@ -43,32 +49,42 @@
   }
 
   &__title {
-    font-size: 2rem; // bigger title
-    font-weight: 600;
-    color: #333;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
   }
 
   &__text {
-    font-size: 1.6rem; // slightly bigger text
-    color: #555;
+    font-size: 0.95rem;
+    color: #6b7280;
     line-height: 1.6;
     flex-grow: 1;
+    margin: 0;
   }
 
   &__button {
-    align-self: start;
-    padding: 0.75rem 1.5rem; // bigger button
-    border-radius: 0.6rem;
+    align-self: stretch;
+    padding: 0.875rem 1.5rem;
+    border-radius: 0.7rem;
     background-color: colors.$purple;
     color: white;
     border: none;
-    font-size: 1.6rem;
+    font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: all 0.2s ease;
 
     &:hover {
-      background-color: colors.$purple-dark;
+      background: linear-gradient(135deg, colors.$purple 0%, #6d28d9 100%);
       transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(124, 58, 237, 0.3);
+    }
+
+    &:active {
+      transform: translateY(0);
     }
   }
 }
