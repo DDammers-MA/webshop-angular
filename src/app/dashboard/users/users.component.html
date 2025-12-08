@@ -24,8 +24,12 @@
 
       
       <form class="form" [formGroup]="form">
-          <input class="users__searchInput" formControlName="name" type="text" name="" id="" (input)="dbOnFilterChange()">
+        <div class="users__search">
 
+          <input class="users__searchInput" formControlName="name" placeholder="search" type="text" name="" id="" (input)="dbOnFilterChange()">
+        </div>
+        <div class="form__container">
+          
           <div class="users__item" *ngFor="let item of users; let i = index">
             <div class="users__info">
               <p class="users__name">{{ item.name }}</p>
@@ -40,6 +44,8 @@
               <button class="users__editBtn" (click)="EditUser(item)">Edit</button>
             </div>
           </div>
+        </div>
+
 
         </form>
      </div>

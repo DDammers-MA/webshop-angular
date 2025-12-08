@@ -22,18 +22,35 @@
    }
 
     &__addBtn{
-        padding: 0.5rem 1rem;
-        border-radius: 100rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.5rem 0.9rem;
+        border-radius: 999px;
         border: none;
-        background: colors.$purple;
-        font-size: 2rem;
-        color: colors.$white;
-     
+        background: #7c3aed; /* purple-600 */
+        color: #ffffff;
+        font-size: 1.4rem;
+        font-weight: 600;
+        box-shadow: 0 6px 18px rgba(124,58,237,0.12);
+        transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+        cursor: pointer;
+
+        svg{ width: 1.2rem; height: 1.2rem; fill: currentColor; }
 
         &:hover{
-            cursor: pointer;
-            background: colors.$purple-dark;
-            transition: 0.2s all ease-in-out;
+            transform: translateY(-2px);
+            background: #6d28d9; /* purple-700 */
+            box-shadow: 0 10px 30px rgba(124,58,237,0.16);
+        }
+
+        &:active{
+            transform: translateY(0);
+        }
+
+        @media (max-width: 640px){
+            padding: 0.45rem 0.7rem;
+            font-size: 1.2rem;
         }
         }
 
@@ -121,6 +138,15 @@
     }
 }
 
+.form{
+
+    max-height: 80vh;
+
+    &__container{
+height: 80vh;
+    overflow-y: scroll;
+    }
+}
 .table{
         background: transparent;
         height: 100%;
@@ -148,6 +174,7 @@
     }
 
     &__item{
+       
         display: flex;
         align-items: center;
         justify-content: space-between;

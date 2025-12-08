@@ -1,0 +1,39 @@
+<li class="cart-item">
+  <!-- Image -->
+  <div class="cart-item__image-wrapper">
+    <img [src]="product().image" alt="{{ product().title }}" class="cart-item__image">
+  </div>
+
+  <!-- Content -->
+  <div class="cart-item__content">
+    <!-- Header with title and remove button -->
+    <div class="cart-item__header">
+      <h3 class="cart-item__title">{{ product().title }}</h3>
+      <button class="cart-item__remove" title="Remove item" (click)="onRemove(product().id)">
+        <i class="fa-regular fa-trash-can"></i>
+      </button>
+    </div>
+
+    <!-- Description -->
+    <p class="cart-item__description">{{ product().description }}</p>
+
+    <!-- Footer with quantity and pricing -->
+    <div class="cart-item__footer">
+      <div class="cart-item__quantity-control">
+        <button class="cart-item__qty-btn">−</button>
+        <span class="cart-item__qty-value">1</span>
+        <button class="cart-item__qty-btn">+</button>
+      </div>
+
+
+      <div class="cart-item__pricing">
+        <div class="cart-item__price">
+          Unit: ${{ product().price || 0 | number: '1.2-2' }}
+        </div>
+        <div class="cart-item__subtotal">
+          ${{ (product().price || 0) | number: '1.2-2' }}
+        </div>
+      </div>
+    </div>
+  </div>
+</li>

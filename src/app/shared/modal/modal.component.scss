@@ -12,32 +12,30 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  height: 1000rem;
 }
 
 .modal {
-  border-radius: 1.5rem;
-  width: 35%;
-  position: absolute;
-  overflow: hidden;
+  border-radius: 1rem;
+  width: min(900px, 90%);
   position: fixed;
-  background: white;
+  background: #fff;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1001;
-  max-height: 100%;
+  max-height: calc(100vh - 4rem);
   overflow: auto;
+  box-shadow: 0 12px 40px rgba(2,6,23,0.12);
+  transition: transform 0.12s ease, opacity 0.12s ease;
 
   &__header {
     width: 100%;
     background: colors.$purple;
     color: white;
     display: flex;
-    align-items: start;
+    align-items: center;
     justify-content: space-between;
-    padding: 1rem 3rem;
-    padding-right: 1rem;
+    padding: 1rem 1.25rem;
     gap: 1rem;
 
     &_warning {
@@ -46,49 +44,64 @@
   }
 
   &__title {
-    font-size: 3rem;
-    font-weight: 100;
-    width: max-content;
-    text-align: start;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1;
+    text-align: left;
+    color: inherit;
   }
 
   &__icon {
-    padding-top: 1rem;
-    font-size: 2.5rem;
+    font-size: 1.6rem;
     cursor: pointer;
     width: max-content;
     text-align: end;
+    opacity: 0.95;
+    transition: transform 0.12s ease, opacity 0.12s ease;
 
+    &:hover{ transform: scale(1.06); opacity: 1; }
   }
 
   &__main {
-    padding: 2rem 3rem;
-    max-height: calc(100vh - 10rem);
+    padding: 1.25rem 1.25rem 1.5rem 1.25rem;
+    max-height: calc(100vh - 8rem);
     overflow: auto;
+    color: #0f172a;
+    background: transparent;
   }
 
   &__footer {
-    padding: 2rem 3rem;
+    padding: 1rem 1.25rem 1.5rem 1.25rem;
     display: flex;
-    gap: 5rem;
+    gap: 1rem;
+    justify-content: flex-end;
+    align-items: center;
+    background: transparent;
+    border-top: 1px solid rgba(15,23,42,0.04);
+  }
+
+  &__alt, &__cta {
+    padding: 0.6rem 1rem;
+    border-radius: 0.6rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    min-width: 7rem;
   }
 
   &__alt {
-    border: crimson solid 0.2rem;
-    background: none;
-    border-radius: 0.5rem;
-    width: 50%;
-    font-size: 2.5rem;
-    cursor: pointer;
+    background: transparent;
+    color: #374151;
+    border: 1px solid rgba(15,23,42,0.06);
   }
+
   &__cta {
-    border: crimson solid 0.2rem;
     background: crimson;
-    color: white;
-    border-radius: 0.5rem;
-    width: 50%;
-    font-size: 2.5rem;
-    cursor: pointer;
+    color: #fff;
+    border: 1px solid rgba(0,0,0,0.04);
+    box-shadow: 0 8px 22px rgba(220,38,38,0.12);
   }
 }
 
@@ -105,7 +118,7 @@
     &__main {
       height: 100%;
       max-height: initial;
-      overflow: initial;
+      overflow: auto;
     }
   }
 }

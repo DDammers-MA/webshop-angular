@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 @Component({
   selector: 'app-project-card',
@@ -9,4 +9,14 @@ import { Component, input } from '@angular/core';
 export class ProjectCardComponent {
   
   product = input<any>()
+
+
+  addToCard(item: any) {
+  item.stringify = JSON.stringify(item);
+  let card = localStorage.getItem("cart");
+  let cardItems = card ? JSON.parse(card) : [];
+  cardItems.push(item);
+  localStorage.setItem("cart", JSON.stringify(cardItems));
+
+  }
 }

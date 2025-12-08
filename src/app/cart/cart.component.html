@@ -1,0 +1,63 @@
+<section class="cart-page">
+    <div class="cart-page__content">
+  <div class="cart-page__header">
+    <h1 class="cart-page__title">Shopping Cart</h1>
+    <p class="cart-page__subtitle">{{ product.length }} item(s)</p>
+  </div>
+
+  <div class="cart-page__container">
+    <!-- Items Section -->
+    <div class="cart-page__items">
+        @if (product.length > 0) {
+  <div>
+        <ul class="cart-items">
+          <app-cart-item *ngFor="let item of product" [product]="item" (remove)="onRemoveItem($event)"></app-cart-item>
+        </ul>
+      </div>
+        }@else {
+    <div class="cart-page__empty">
+          <h2>Your cart is empty</h2>
+          <p>Start shopping to add items to your cart</p>
+          <button class="cart-page__continue-btn">Continue Shopping</button>
+        </div>
+        }
+
+
+    </div>
+
+    <!-- Summary Section -->
+    <div class="cart-page__summary" *ngIf="product.length > 0">
+      <div class="cart-summary">
+        <h3 class="cart-summary__title">Order Summary</h3>
+        
+        <div class="cart-summary__row">
+          <span class="cart-summary__label">Subtotal:</span>
+          <span class="cart-summary__value">$</span>
+        </div>
+        
+        <div class="cart-summary__row">
+          <span class="cart-summary__label">Shipping:</span>
+          <span class="cart-summary__value">$0.00</span>
+        </div>
+        
+        <div class="cart-summary__row">
+          <span class="cart-summary__label">Tax:</span>
+          <span class="cart-summary__value">$</span>
+        </div>
+        
+        <div class="cart-summary__row cart-summary__row--total">
+          <span class="cart-summary__label">Total:</span>
+          <span class="cart-summary__total">$</span>
+        </div>
+
+        <button class="cart-summary__btn cart-summary__btn--checkout" >
+          Proceed to Checkout
+        </button>
+        <button class="cart-summary__btn cart-summary__btn--continue">
+          Continue Shopping
+        </button>
+      </div>
+    </div>
+  </div>
+    </div>
+</section>

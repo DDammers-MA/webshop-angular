@@ -20,15 +20,13 @@ import { ModalComponent } from './shared/modal/modal.component';
 import { UserModalComponent } from './dashboard/users/user-modal/user-modal.component';
 import { RegisterComponent } from './account/register/register.component';
 import { LogoutComponent } from './account/logout/logout.component';
-
-
-
+import { CartComponent } from './cart/cart.component';
+import { CartModule } from './cart/cart.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
-
-
+    CartModule,
     PortalModule,
     DashboardModule,
     HttpClientModule,
@@ -44,31 +42,34 @@ import { LogoutComponent } from './account/logout/logout.component';
         component: HomeComponent
       },
       {
+        path: 'cart',
+        component: CartComponent
+      },
+      {
         path: 'login',
         component: LoginComponent,
         title: 'Login'
       },
-        {
+      {
         path: 'logout',
         component: LogoutComponent,
         title: 'logout'
       },
-            {
+      {
         path: 'register',
         component: RegisterComponent,
         title: 'register'
       },
       {
-        path: 'dashboard', 
+        path: 'dashboard',
         component: DashboardComponent,
         title: 'dashboard',
         children: [
           { path: 'users', component: UsersComponent, title: 'users' }
         ]
-      } // Add this line for the dashboard route,
+      }
     ])
   ],
   bootstrap: [AppComponent],
-
 })
 export class AppModule { }

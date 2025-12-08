@@ -7,7 +7,7 @@
                 <h5 class="cards__title">{{ product().title }}</h5>
                 <p class="cards__text">{{ product().description }}</p>
 
-                <button class="cards__button">Add to cart</button>
+                <button (click)="addToCard(product())" class="cards__button">Add to cart</button>
             </div>
         </div>
 </div>
