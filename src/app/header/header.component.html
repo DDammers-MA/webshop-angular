@@ -20,8 +20,19 @@
 
         <ul class="header__navList">
             <li class="header__navListItem">
-                <a class="header__navLink" routerLink="cart" routerLinkActive="active"><i class="fa-solid fa-cart-shopping"></i></a>
+
+           
+                <a class="header__navLink" routerLink="cart" routerLinkActive="active"><i class="fa-solid fa-cart-shopping"></i>
+                
+                    @if (this.product?.length > 0) {
+                         <div class="header__cartNotify">
+                    !
+                </div>
+                       }
+                </a>
             </li>
+
+
             <li class="header__navListItem">
 
                 @if(isLoggedIn){

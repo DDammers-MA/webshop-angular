@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { AfterContentChecked, AfterViewInit, Component, inject } from '@angular/core';
 import { AuthService } from '../account/service/auth.service';
 import { Observable, Subscription } from 'rxjs';
 
@@ -8,7 +8,7 @@ import { Observable, Subscription } from 'rxjs';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent {
+export class HeaderComponent implements AfterContentChecked {
   currentUser$!: Observable<any>;
   chosenUserId: any; // bind this to dropdown's chosenOption
 
@@ -26,6 +26,19 @@ export class HeaderComponent {
     this.currentUser$ = this.auth.currentUser$;
   }
 
+    product: any
+
+    ngAfterContentChecked(): void {
+      this.getCartItems();
+    }
+
+
+
+  getCartItems(){
+     this.product = JSON.parse(localStorage.getItem('cart') || '[]');
+
+  }
+
 toggleUserMenu(event: MouseEvent) {
   event.preventDefault();
   this.isUserMenuOpen = !this.isUserMenuOpen;
@@ -33,6 +46,9 @@ toggleUserMenu(event: MouseEvent) {
 
   
   ngOnInit() {
+
+     
+    
     // Subscribe to currentUser changes
     this.sub.add(
       this.currentUser$.subscribe(user => {
@@ -50,6 +66,9 @@ toggleUserMenu(event: MouseEvent) {
       })
     );
      this.getUserMenu();
+
+   
+    
   }
 
     ngOnDestroy() {

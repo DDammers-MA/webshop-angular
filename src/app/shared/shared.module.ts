@@ -5,9 +5,11 @@ import { DropdownComponent } from "./dropdown/dropdown.component";
 import { CommonModule } from "@angular/common";
 import { RouterLink } from "@angular/router";
 
+import { ToastComponent } from "./toast/toast.component";
+
 @NgModule({
-  declarations: [ProjectCardComponent, ModalComponent, DropdownComponent],
+  declarations: [ProjectCardComponent, ModalComponent, DropdownComponent, ToastComponent],
     imports: [CommonModule, RouterLink],
-    exports: [ProjectCardComponent, ModalComponent, DropdownComponent]
+    exports: [ProjectCardComponent, ModalComponent, DropdownComponent, ToastComponent]
 })
 export class SharedModule { }

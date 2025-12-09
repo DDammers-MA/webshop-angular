@@ -1,0 +1,43 @@
+
+<div class="toast__container">
+  @for (toast of service.toasts; track toast.id) {
+    <article
+      [id]="'toast-'+ toast.id"
+      class="toast"
+      [ngClass]="{
+        'toast-green': toast.type == 'succes',
+        'toast-blue': toast.type == 'message',
+        'toast-orange': toast.type == 'warning',
+        'toast-red': toast.type == 'error',
+        
+      }"
+    >
+      <div
+        class="toast__type"
+        [ngClass]="{
+          'toast__type-green': toast.type == 'succes',
+          'toast__type-blue': toast.type == 'message',
+          'toast__type-orange': toast.type == 'warning',
+          'toast__type-red': toast.type == 'error'
+        }"
+      >
+        <i
+          class="fa-solid toast__type_icon"
+          [ngClass]="{
+            'fa-check': toast.type == 'succes',
+            'fa-bell': toast.type == 'message',
+            'fa-triangle-exclamation': toast.type == 'warning',
+            'fa-xmark': toast.type == 'error'
+          }"
+        ></i>
+      </div>
+      <div class="toast__text">
+        <h4>{{ toast.title }}</h4>
+        <p>{{ toast.description }}</p>
+      </div>
+      <div class="toast__close">
+        <i class=" fa-solid fa-xmark" (click)="service.removeToast(toast.id)" ></i>
+      </div>
+    </article>
+  }
+</div>

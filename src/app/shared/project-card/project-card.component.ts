@@ -1,4 +1,5 @@
-import { Component, input, output } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-project-card',
@@ -9,6 +10,7 @@ import { Component, input, output } from '@angular/core';
 export class ProjectCardComponent {
   
   product = input<any>()
+  toast = inject(ToastService)
 
 
   addToCard(item: any) {
@@ -17,6 +19,14 @@ export class ProjectCardComponent {
   let cardItems = card ? JSON.parse(card) : [];
   cardItems.push(item);
   localStorage.setItem("cart", JSON.stringify(cardItems));
+
+   this.toast.addToast(
+                      'succes',
+                      'Product added to cart',
+                      'succes',
+                      5000,
+                    )
+
 
   }
 }

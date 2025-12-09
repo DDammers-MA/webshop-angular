@@ -26,6 +26,15 @@
         align-items: center;
         font-size: 1.8rem;
     }
+
+    &__navList{
+        
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
 &__navListItem{
     list-style: none;
     display: inline-block;
@@ -45,7 +54,24 @@
         margin: 0 5px;
         border-radius: 5px;
         transition: background-color 0.3s;
+        position: relative;
     
+    }
+
+    &__cartNotify{
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 1rem;
+        width: 1rem;
+        background: red;
+        border-radius: 50%;
+        font-size: 0.8rem;
+        top: 20%;
+        right:20%;
+        transform: translate(50%, -50%);
+
     }
 }
 
