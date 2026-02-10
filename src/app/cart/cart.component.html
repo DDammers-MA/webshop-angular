@@ -11,7 +11,7 @@
         @if (product.length > 0) {
   <div>
         <ul class="cart-items">
-          <app-cart-item *ngFor="let item of product" [product]="item" (remove)="onRemoveItem($event)"></app-cart-item>
+          <app-cart-item *ngFor="let item of product" [product]="item" [quantity]="quantity" (remove)="onRemoveItem($event)"></app-cart-item>
         </ul>
       </div>
         }@else {
@@ -61,3 +61,5 @@
   </div>
     </div>
 </section>
+
+<app-toast></app-toast>

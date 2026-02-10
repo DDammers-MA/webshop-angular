@@ -12,8 +12,11 @@ export class CartItemComponent implements OnInit {
   product = input<any>(); 
 
 remove = output<number>();
+quantity = input<number>();
+
 
   ngOnInit(): void {
+    console.log(this.product().id);
     
   }
 

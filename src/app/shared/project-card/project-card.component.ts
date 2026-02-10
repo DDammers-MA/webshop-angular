@@ -1,5 +1,6 @@
-import { Component, inject, input, output } from '@angular/core';
+import { Component, inject, input, OnInit, output } from '@angular/core';
 import { ToastService } from '../../services/toast.service';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-project-card',
@@ -7,26 +8,20 @@ import { ToastService } from '../../services/toast.service';
   templateUrl: './project-card.component.html',
   styleUrl: './project-card.component.scss'
 })
-export class ProjectCardComponent {
+export class ProjectCardComponent implements OnInit {
   
   product = input<any>()
   toast = inject(ToastService)
+  cart  = inject(CartService)
 
+  ngOnInit(): void {
+
+
+
+  }
 
   addToCard(item: any) {
-  item.stringify = JSON.stringify(item);
-  let card = localStorage.getItem("cart");
-  let cardItems = card ? JSON.parse(card) : [];
-  cardItems.push(item);
-  localStorage.setItem("cart", JSON.stringify(cardItems));
 
-   this.toast.addToast(
-                      'succes',
-                      'Product added to cart',
-                      'succes',
-                      5000,
-                    )
-
-
+    this.cart.addItem(item)
   }
 }
