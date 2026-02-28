@@ -1,0 +1,153 @@
+<section class="profile">
+	<div class="profile__header">
+		<div class="profile__header-inner">
+			<div class="profile__avatar">
+				<img src="/assets/default-avatar.png" alt="Avatar" />
+			</div>
+			<div class="profile__meta">
+				<h1 class="profile__name">Full Name</h1>
+				<p class="profile__role">Member since 2024</p>
+			</div>
+			<div class="profile__actions">
+				<button class="btn btn--outline">Edit profile</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="profile__body">
+		<aside class="profile__sidebar">
+			<div class="card card--compact">
+				<h3 class="card__title">Contact</h3>
+				<p class="muted">Email</p>
+				<p>user&#64;example.com</p>
+				<p class="muted">Phone</p>
+				<p>+1 (555) 555-5555</p>
+			</div>
+
+			<div class="card card--compact">
+				<h3 class="card__title">Preferences</h3>
+				<p class="muted">Newsletter: Subscribed</p>
+			</div>
+		</aside>
+
+		<main class="profile__content">
+			<div class="card">
+				<h2 class="card__title">Profile Details</h2>
+				<div class="details-grid">
+					<div class="details-grid__item">
+						<label class="label">First name</label>
+						<div class="value">Jane</div>
+					</div>
+					<div class="details-grid__item">
+						<label class="label">Last name</label>
+						<div class="value">Doe</div>
+					</div>
+					<div class="details-grid__item details-grid__item--full">
+						<label class="label">Bio</label>
+						<div class="value">A short bio or description can go here. Keep it brief and friendly.</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="card card--chart">
+				<div class="card__header">
+					<h2 class="card__title">Recent activity</h2>
+					<div class="chart-controls">
+						<button class="btn btn--chip is-active">Year</button>
+						<button class="btn btn--chip">Month</button>
+						<button class="btn btn--chip">Week</button>
+					</div>
+				</div>
+
+				<div class="chart-area" role="img" aria-label="Total products bought over time">
+					<svg class="svg-chart" viewBox="0 0 600 220" preserveAspectRatio="xMinYMin meet">
+						<!-- background grid -->
+						<g class="grid" fill="none" stroke="rgba(16,24,40,0.04)" stroke-width="1">
+							<line x1="40" y1="30" x2="580" y2="30"></line>
+							<line x1="40" y1="80" x2="580" y2="80"></line>
+							<line x1="40" y1="130" x2="580" y2="130"></line>
+							<line x1="40" y1="180" x2="580" y2="180"></line>
+						</g>
+						<!-- y axis labels -->
+						<g class="y-labels" fill="#64748b" font-size="11">
+							<text x="6" y="34">100</text>
+							<text x="6" y="84">75</text>
+							<text x="6" y="134">50</text>
+							<text x="6" y="184">25</text>
+						</g>
+						<!-- bars (sample monthly data) -->
+						<g transform="translate(40,20)" class="bars">
+							<!-- 12 bars spaced -->
+							<rect x="0" y="90" width="36" height="90" rx="4" fill="#3b82f6"></rect>
+							<rect x="46" y="60" width="36" height="120" rx="4" fill="#3b82f6"></rect>
+							<rect x="92" y="110" width="36" height="70" rx="4" fill="#3b82f6"></rect>
+							<rect x="138" y="40" width="36" height="140" rx="4" fill="#3b82f6"></rect>
+							<rect x="184" y="80" width="36" height="100" rx="4" fill="#3b82f6"></rect>
+							<rect x="230" y="30" width="36" height="150" rx="4" fill="#3b82f6"></rect>
+							<rect x="276" y="100" width="36" height="80" rx="4" fill="#3b82f6"></rect>
+							<rect x="322" y="70" width="36" height="110" rx="4" fill="#3b82f6"></rect>
+							<rect x="368" y="120" width="36" height="60" rx="4" fill="#3b82f6"></rect>
+							<rect x="414" y="95" width="36" height="85" rx="4" fill="#3b82f6"></rect>
+							<rect x="460" y="55" width="36" height="125" rx="4" fill="#3b82f6"></rect>
+							<rect x="506" y="140" width="36" height="40" rx="4" fill="#3b82f6"></rect>
+						</g>
+						<!-- x labels -->
+						<g class="x-labels" fill="#475569" font-size="11">
+							<text x="18" y="210">Jan</text>
+							<text x="64" y="210">Feb</text>
+							<text x="110" y="210">Mar</text>
+							<text x="156" y="210">Apr</text>
+							<text x="202" y="210">May</text>
+							<text x="248" y="210">Jun</text>
+							<text x="294" y="210">Jul</text>
+							<text x="340" y="210">Aug</text>
+							<text x="386" y="210">Sep</text>
+							<text x="432" y="210">Oct</text>
+							<text x="478" y="210">Nov</text>
+							<text x="524" y="210">Dec</text>
+						</g>
+					</svg>
+					<div class="chart-legend muted">Sample totals — static preview</div>
+				</div>
+			</div>
+
+			<div class="card card--orders">
+	 			<h2 class="card__title">Orders</h2>
+				<table class="orders-table">
+					<thead>
+						<tr>
+							<th>Order</th>
+							<th>Date</th>
+							<th>Items</th>
+							<th>Total</th>
+							<th>Status</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>#1001</td>
+							<td>2026-02-14</td>
+							<td>3</td>
+							<td>€72.50</td>
+							<td><span class="status status--delivered">Delivered</span></td>
+						</tr>
+						<tr>
+							<td>#1008</td>
+							<td>2026-02-20</td>
+							<td>1</td>
+							<td>€19.99</td>
+							<td><span class="status status--shipped">Shipped</span></td>
+						</tr>
+						<tr>
+							<td>#1012</td>
+							<td>2026-02-27</td>
+							<td>2</td>
+							<td>€45.00</td>
+							<td><span class="status status--pending">Pending</span></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</main>
+	</div>
+</section>

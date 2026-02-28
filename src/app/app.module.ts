@@ -22,10 +22,12 @@ import { RegisterComponent } from './account/register/register.component';
 import { LogoutComponent } from './account/logout/logout.component';
 import { CartComponent } from './cart/cart.component';
 import { CartModule } from './cart/cart.module';
+import { ProfileComponent } from './account/profile/profile.component';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
+  
     CartModule,
     PortalModule,
     DashboardModule,
@@ -54,6 +56,12 @@ import { CartModule } from './cart/cart.module';
         path: 'logout',
         component: LogoutComponent,
         title: 'logout'
+      },
+    
+      {
+        path: 'profile',
+        component: ProfileComponent,
+        title: 'profile'
       },
       {
         path: 'register',

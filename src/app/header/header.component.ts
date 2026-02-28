@@ -79,19 +79,19 @@ toggleUserMenu(event: MouseEvent) {
     this.menuItems = [
      {
         label: 'profile',
-        value: 'profiel',
+        value: 'profile',
         // visible: admin || asiel || user,
-        link: '/mijn-dierenasiels/profiel',
+        link: '/profile',
       },
          {
         label: 'dashboard',
-        value: 'profiel',
+        value: 'dashboard',
         visible: this.isAdmin,
         link: '/dashboard',
       },
            {
         label: 'Logout',
-        value: 'profiel',
+        value: 'logout',
         // visible: admin || asiel || user,
         link: '/logout',
       },
