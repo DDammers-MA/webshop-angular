@@ -20,8 +20,7 @@ export class CartService {
     private cartItems = new BehaviorSubject<CartItem[]>([]);
     public cartItems$ = this.cartItems.asObservable();
 
-    constructor() {}
-
+    
     addItem(item: any): void {
         const newItem = { ...item };
         const card = localStorage.getItem('cart');
@@ -34,15 +33,16 @@ export class CartService {
             newItem.quantity = 1;
             cardItems.push(newItem);
         }
+            this.toast.addToast(
+            'succes',
+            'cart updated',
+            'succes',
+            5000,
+            );
 
         localStorage.setItem('cart', JSON.stringify(cardItems));
 
-        this.toast.addToast(
-            'succes',
-            'Product added to cart',
-            'succes',
-            5000,
-        );
+  
 
 
     }
@@ -50,6 +50,27 @@ export class CartService {
     removeItem(id: string): void {
         const current = this.cartItems.value.filter(i => i.id !== id);
         this.cartItems.next(current);
+    }
+
+    removeSingleItem(product: any): void {
+        const card = localStorage.getItem('cart');
+        const cardItems = card ? JSON.parse(card) : [];
+        const existing = cardItems.find((i: any) => i.id == product.id);
+
+        if (existing) {
+            existing.quantity = (existing.quantity || 0) - 1;
+            if (existing.quantity <= 0) {
+                this.removeItem(existing.id);
+                return;
+            }
+            localStorage.setItem('cart', JSON.stringify(cardItems));
+            this.toast.addToast(
+                'succes',
+                'cart updated',
+                'succes',
+                5000,
+            );
+        }
     }
 
     getCart(): CartItem[] {

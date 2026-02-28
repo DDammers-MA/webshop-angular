@@ -37,9 +37,6 @@ cart = inject(CartService)
   
   }
 
-  updateQuantity() {
-
-  }
 
   onRemoveItem(productId: number) {
     this.product = this.product.filter(item => item.id !== productId);

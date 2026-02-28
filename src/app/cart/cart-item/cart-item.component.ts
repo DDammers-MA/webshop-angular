@@ -1,4 +1,6 @@
-import { Component, input, OnInit, Output, EventEmitter, output } from '@angular/core';
+import { Component, input, OnInit, Output, EventEmitter, output, inject } from '@angular/core';
+import { CartService } from '../../services/cart.service';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-cart-item',
@@ -7,17 +9,21 @@ import { Component, input, OnInit, Output, EventEmitter, output } from '@angular
   templateUrl: './cart-item.component.html',
   styleUrl: './cart-item.component.scss'
 })
-export class CartItemComponent implements OnInit {
+export class CartItemComponent {
 
   product = input<any>(); 
 
 remove = output<number>();
 quantity = input<number>();
 
+cart = inject(CartService)
 
-  ngOnInit(): void {
-    console.log(this.product().id);
+  updateQuantity(event : any) {
+
+    // console.log(event);
     
+
+    this.cart.addItem(event);
   }
 
   onRemove(id: number) {    

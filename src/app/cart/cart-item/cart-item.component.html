@@ -20,9 +20,9 @@
     <!-- Footer with quantity and pricing -->
     <div class="cart-item__footer">
       <div class="cart-item__quantity-control">
-        <button class="cart-item__qty-btn">−</button>
+        <button  class="cart-item__qty-btn" (click)="this.cart.removeSingleItem(product())">−</button>
         <span class="cart-item__qty-value">{{ this.product().quantity || 1 }}</span>
-        <button class="cart-item__qty-btn">+</button>
+        <button (click)="this.cart.addItem(this.product())" class="cart-item__qty-btn">+</button>
       </div>
 
 
